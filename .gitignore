@@ -38,3 +38,4 @@ actors/.terse
 
 # large local 3D city model (TerraPrinter export, ~200 MB) — not committed
 client/public/models/*.glb
+demo-video/
