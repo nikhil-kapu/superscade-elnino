@@ -1,0 +1,8 @@
+{
+  "name": "superscade-actors",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "terse-sdk": "latest"
+  }
+}
