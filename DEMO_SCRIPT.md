@@ -1,7 +1,7 @@
 # Voiceover script (2:00, timed to `demo-video/superscade-elnino-demo.mp4`)
 
 **[0:00–0:15] Hook (Bay Area 3D, storm starts)**
-El Niño winters don't hit the Bay Area one disaster at a time. They hit in cascades. This is SUPERSCADE: a live AI agent team that rehearses an El Niño winter before it arrives. We trigger an atmospheric river plus a seven-foot king tide.
+This winter, El Niño could flood the Bay Area. When it does, every city will fight over the same few helicopters and rescue teams. So we built SUPERSCADE: an AI emergency team that practices the disaster first. Let's hit the Bay with a massive storm.
 
 **[0:15–0:23] The cascade**
 The simulation never waits for the AI. Creeks overflow, the Santa Cruz Mountains slide, Highways 17, 84 and 92 close, substations trip and levees overtop, tick by tick.
