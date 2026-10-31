@@ -15,12 +15,13 @@ fs.mkdirSync(OUT, { recursive: true });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const post = (p, body) => fetch(API + p, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) }).then((r) => r.json()).catch((e) => ({ error: String(e) }));
 const idle = async (maxMs) => { const t0 = Date.now(); while (Date.now() - t0 < maxMs) { const h = await fetch(API + '/api/health').then((r) => r.json()).catch(() => null); if (h && !h.run) return true; await sleep(700); } return false; };
-const T0 = Date.now(); const stamp = () => ((Date.now() - T0) / 1000).toFixed(1).padStart(6);
+let T0 = Date.now(); const stamp = () => ((Date.now() - T0) / 1000).toFixed(1).padStart(6);
 
 await post('/api/stop'); await idle(8000);
 const browser = await chromium.launch({ headless: false, args: ['--window-size=1440,980', '--ignore-gpu-blocklist'] });
 const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, recordVideo: { dir: OUT, size: { width: 1440, height: 900 } } });
 const page = await ctx.newPage();
+T0 = Date.now(); // stamps = video time
 const caption = async (text) => {
   console.log(stamp(), 'caption:', text);
   await page.evaluate((t) => {
@@ -66,7 +67,8 @@ await sleep(9000);
 await post('/api/stop'); await idle(9000);
 await caption('Zoom in: San Francisco in 3D (TerraPrinter city model), king tide + storm');
 await page.goto(UI + '/?region=sanfrancisco', { waitUntil: 'domcontentloaded' });
-await sleep(1500);
+await sleep(1200);
+await click('button:has-text("Scene")'); // the 3D city model lives in the Scene view
 await caption('Zoom in: San Francisco in 3D (TerraPrinter city model), king tide + storm');
 await sleep(5500);
 await post('/api/run', { regionId: 'sanfrancisco', seed: 11 });
@@ -83,6 +85,6 @@ await post('/api/stop');
 const webm = fs.readdirSync(OUT).filter((f) => f.endsWith('.webm')).map((f) => path.join(OUT, f)).sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs)[0];
 if (webm) {
   const mp4 = path.join(OUT, 'superscade-elnino-demo.mp4');
-  execSync(`ffmpeg -y -loglevel error -i "${webm}" -t 120 -c:v libx264 -pix_fmt yuv420p -crf 22 -preset veryfast -movflags +faststart "${mp4}"`);
+  execSync(`ffmpeg -y -loglevel error -ss 5 -i "${webm}" -t 120 -c:v libx264 -pix_fmt yuv420p -crf 22 -preset veryfast -movflags +faststart "${mp4}"`);
   console.log('wrote', mp4);
 }

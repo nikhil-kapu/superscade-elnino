@@ -1,33 +1,36 @@
-# Voiceover script (about 2:00, timed to `demo-video/superscade-elnino-demo.mp4`)
+# Voiceover script (2:00, timed to `demo-video/superscade-elnino-demo.mp4`)
 
-**[0:00–0:12] Hook**
-El Niño winters don't hit the Bay Area one disaster at a time. They hit in cascades. In 1982 one storm set off thousands of landslides. In 2017 Coyote Creek forced 14,000 people out of San Jose. This is SUPERSCADE: a live AI agent team that rehearses an El Niño winter before it arrives.
+**[0:00–0:15] Hook (Bay Area 3D, storm starts)**
+El Niño winters don't hit the Bay Area one disaster at a time. They hit in cascades. This is SUPERSCADE: a live AI agent team that rehearses an El Niño winter before it arrives. We trigger an atmospheric river plus a seven-foot king tide.
 
-**[0:12–0:31] The storm**
-We trigger an atmospheric river plus a seven-foot king tide. The simulation never waits for the AI. Creeks overflow, the Santa Cruz Mountains slide, Highways 17, 84 and 92 close, substations trip and levees overtop, tick by tick.
+**[0:15–0:23] The cascade**
+The simulation never waits for the AI. Creeks overflow, the Santa Cruz Mountains slide, Highways 17, 84 and 92 close, substations trip and levees overtop, tick by tick.
 
-**[0:31–0:42] The map**
-This is the real Bay Area: terrain, highways, hospitals, county emergency operations centers, fire stations, pump stations and PG&E substations. These are the facilities that matter in a flood.
+**[0:23–0:34] Real map**
+This is the real Bay Area: terrain, highways, hospitals, county emergency operations centers, fire stations, pump stations and substations.
 
-**[0:42–0:53] Agents on Terse**
-A chief agent triages the districts at risk and spins up one agent per city, each with its own helpers. Every agent that spins up gets its own Terse Durable Actor: its own SQLite memory of what it was told, what it planned and what it was refused.
+**[0:34–0:46] Agents on Terse**
+A chief agent triages the districts at risk and spins up one agent per city, plus helpers and a verifier. Every agent that spins up gets its own Terse Durable Actor, with its own SQLite memory of what it was told, planned and refused.
 
-**[0:53–1:04] The Terse ledger**
+**[0:46–0:58] Terse ledger**
 Scarce resources live in a Terse ledger actor: swift-water teams, helicopters, pump crews and shelter beds. A Terse actor handles one call at a time, so when ten cities ask at once, nobody double-books a helicopter. Denied claims force a re-plan.
 
-**[1:04–1:17] Agent Relay**
+**[0:58–1:11] Agent Relay**
 The agents talk over Agent Relay:
 - the chief DMs each district its assignment,
 - districts post plans and claims to the storm channel,
-- the verifier answers in the thread.
+- the verifier replies in the thread.
 
 Each agent reads its Relay inbox before it plans, so the coordination itself runs through Relay.
 
-**[1:17–1:27] Verification**
-Plans are only done when the verifier accepts them. Unsafe plans, like routes through flooded roads, get rejected and re-planned live.
+**[1:11–1:20] Verification (right panel: Terse ledger + Relay feed)**
+Plans only count when the verifier accepts them. Here you can see the live ledger, with grants and denials, and the Relay traffic side by side.
 
-**[1:27–1:55] San Francisco in 3D**
-Zooming into San Francisco, a real 3D city model. At king tide the Embarcadero, Mission Bay and the Marina flood and Ocean Beach erodes, while the same agent team responds.
+**[1:20–1:45] San Francisco in 3D**
+Now zoom into San Francisco, a real 3D city model. We start the same storm with a king tide, and the same agent architecture spins up for the city's neighborhoods.
+
+**[1:45–1:55] Impact**
+The Embarcadero, Mission Bay and the Marina flood at king tide, Ocean Beach erodes, and the agents respond live.
 
 **[1:55–2:00] Close**
-Emergency managers can rehearse resource fights before the storm. Built today on Terse, Agent Relay and OpenAI.
+Rehearse the fight for resources before the storm. Built today on Terse, Agent Relay and OpenAI.
