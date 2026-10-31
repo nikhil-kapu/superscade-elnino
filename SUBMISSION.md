@@ -13,6 +13,17 @@ El Niño winters hit the Bay Area in cascades, not one at a time:
 
 Each county plans for its own hazards. In a real event, though, the same few swift-water teams, helicopters, pump crews and shelter beds get fought over by every city at once. SUPERSCADE lets emergency managers rehearse that contention before the storm arrives.
 
+## Why durable actors
+**Today, disaster data is siloed.** Hospital capacity, shelter rosters, pump stations, the power grid, road closures and rescue teams each sit in a different institution's database. Turning that into one live response takes an enormous amount of human coordination: phone trees, spreadsheets and emergency operations center staff relaying updates by hand.
+
+SUPERSCADE gives every district, every responder and every shared resource its **own durable actor**:
+- **Own state:** each actor keeps its live state in its own SQLite database.
+- **Shared channel:** the actors coordinate over Agent Relay.
+- **One ledger:** a single ledger actor hands out scarce resources one claim at a time, so nothing is double-booked.
+- **Full record:** every assignment, plan, claim, denial and verdict is recorded and observable.
+
+The result is a highly efficient disaster response plan that can be **rehearsed, observed and audited** without stitching the data together by hand.
+
 ## What you see in the demo
 1. **Trigger:** pick **SF Bay Area: El Niño winter storms** (or Nepal's Trishuli basin, same engine) and start an atmospheric river. Rain saturates the Santa Cruz Mountains and Marin hills, creeks rise, low bayfront districts flood at king tide, and Hwy 1, Hwy 17 and the bridges close.
 2. **Agents spawn in real time:**

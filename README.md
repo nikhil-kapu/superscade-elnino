@@ -20,6 +20,17 @@ When El Niño hits, the disasters arrive together:
 
 Every city then competes for the **same few helicopters, swift-water teams and shelter beds**. Plans are written county by county, but nobody rehearses that fight.
 
+**The data is siloed too.** Hospital capacity, shelter rosters, pump-station status, the power grid, road closures and rescue-team rosters each live in a different institution's database: counties, cities, utilities, Caltrans, hospitals. Mapping all of it into one live response today takes **an enormous amount of human coordination**: phone trees, spreadsheets and emergency operations center staff relaying updates by hand, usually while the storm is already hitting.
+
+## Our approach: one durable agent per piece of the response
+SUPERSCADE gives **every district, every responder and every shared resource its own durable actor**:
+- **Each actor holds its own state** in its own SQLite database, a live, always-current record of what it knows, what it was asked and what it decided.
+- **The actors talk over Agent Relay** instead of through people relaying updates by hand.
+- **Shared resources are managed in one place.** A ledger actor processes one claim at a time, so the same helicopter can't be promised to two cities.
+- **The whole response is observable.** Every assignment, plan, claim, denial and verdict is recorded and visible live, so you can see who was told what, when, and why a plan was rejected.
+
+The result is a **coordinated disaster response plan that you can rehearse, observe and audit** across institutions, without a room full of people stitching the data together by hand. In the demo, each district agent stands in for one of these institutional silos.
+
 ## What SUPERSCADE does
 1. **Trigger:** you start an **atmospheric river and a king tide**.
 2. **Cascade:** a simulation sets off creek floods, Santa Cruz Mountains debris flows, Pacifica bluff collapse, closures on Hwy 17, 84, 92 and Devil's Slide, tripped substations, overwhelmed pump stations and overtopped levees.
